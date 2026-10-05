@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between"><h2>Students</h2><a class="btn btn-success" href="{{ url_for('students.new_student') }}">Add Student</a></div>
+<form class="my-3"><input name="q" value="{{ q }}" class="form-control" placeholder="Search name/email"></form>
+<table class="table table-bordered"><tr><th>ID</th><th>Name</th><th>Email</th><th>Actions</th></tr>
+{% for s in students %}<tr><td>{{ s.id }}</td><td>{{ s.name }}</td><td>{{ s.email }}</td><td>
+<a href="{{ url_for('students.student_detail', id=s.id) }}">View</a> |
+<a href="{{ url_for('students.edit_student', id=s.id) }}">Edit</a>
+<form method="post" action="{{ url_for('students.delete_student_confirm', id=s.id) }}" style="display:inline" onsubmit="return confirm('Delete this student?')"><button class="btn btn-link p-0 text-danger">Delete</button></form>
+</td></tr>{% endfor %}
+</table>
+{% endblock %}

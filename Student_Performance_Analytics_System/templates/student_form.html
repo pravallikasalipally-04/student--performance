@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ "Edit" if student else "Add" }} Student</h2>
+<form method="post" action="{{ action }}" class="col-md-6">
+{% if student %}<input type="hidden" name="_method" value="PUT">{% endif %}
+<input class="form-control mb-2" name="name" value="{{ student.name if student else '' }}" placeholder="Name" required>
+<input class="form-control mb-2" name="email" type="email" value="{{ student.email if student else '' }}" placeholder="Email" required>
+<button class="btn btn-primary">Save</button>
+</form>
+{% endblock %}

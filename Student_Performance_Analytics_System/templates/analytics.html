@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Analytics Dashboard</h2>
+<div class="row mb-3">
+<div class="col"><div class="card p-3"><b>Mean</b><h3>{{ stats.mean }}</h3></div></div>
+<div class="col"><div class="card p-3"><b>Median</b><h3>{{ stats.median }}</h3></div></div>
+<div class="col"><div class="card p-3"><b>Std Dev</b><h3>{{ stats.std }}</h3></div></div>
+</div>
+<form class="row g-2 mb-3"><div class="col"><select name="course" class="form-select"><option value="">All Courses</option>{% for c in courses %}<option value="{{ c.code }}">{{ c.code }} - {{ c.name }}</option>{% endfor %}</select></div><div class="col"><input name="student" class="form-control" placeholder="Student name"></div><div class="col"><button class="btn btn-primary">Filter</button></div></form>
+<a class="btn btn-outline-success" href="{{ url_for('analytics.export_report', fmt='csv') }}">Export CSV</a>
+<a class="btn btn-outline-primary" href="{{ url_for('analytics.export_report', fmt='xlsx') }}">Export Excel</a>
+<hr><h4>Average by Course</h4><table class="table"><tr><th>Code</th><th>Course</th><th>Average</th></tr>{% for x in course_avg %}<tr><td>{{ x.code }}</td><td>{{ x.course }}</td><td>{{ x.score }}</td></tr>{% endfor %}</table>
+<h4>Student Ranking per Course</h4><table class="table"><tr><th>Student</th><th>Course</th><th>Average</th></tr>{% for x in ranking %}<tr><td>{{ x.student }}</td><td>{{ x.course }}</td><td>{{ x.score }}</td></tr>{% endfor %}</table>
+<hr><h4>Upload Grade CSV</h4><form method="post" action="{{ url_for('analytics.upload_csv') }}" enctype="multipart/form-data"><input class="form-control mb-2" type="file" name="file" accept=".csv" required><button class="btn btn-warning">Upload</button></form>
+<p class="mt-2">CSV columns: student_id, course_id, score, date</p>
+{% endblock %}

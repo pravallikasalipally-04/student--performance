@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block content %}<h2>Grade #{{ grade.id }}</h2><p>Student: {{ grade.student.name }}</p><p>Course: {{ grade.course.name }}</p><p>Score: {{ grade.score }}</p><p>Date: {{ grade.date }}</p><a class="btn btn-primary" href="{{ url_for('grades.grades_collection') }}">Back</a>{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Dashboard</h2>
+<div class="row">
+<div class="col-md-4"><div class="card p-3"><h5>Students</h5><h2>{{ student_count }}</h2></div></div>
+<div class="col-md-4"><div class="card p-3"><h5>Courses</h5><h2>{{ course_count }}</h2></div></div>
+<div class="col-md-4"><div class="card p-3"><h5>Grades</h5><h2>{{ grade_count }}</h2></div></div>
+</div>
+{% endblock %}

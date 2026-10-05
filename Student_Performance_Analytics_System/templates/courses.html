@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block content %}<div class="d-flex justify-content-between"><h2>Courses</h2><a class="btn btn-success" href="{{ url_for('courses.new_course') }}">Add Course</a></div>
+<table class="table table-bordered"><tr><th>ID</th><th>Name</th><th>Code</th><th>Actions</th></tr>
+{% for c in courses %}<tr><td>{{ c.id }}</td><td>{{ c.name }}</td><td>{{ c.code }}</td><td><a href="{{ url_for('courses.course_detail', id=c.id) }}">View</a> | <a href="{{ url_for('courses.edit_course', id=c.id) }}">Edit</a></td></tr>{% endfor %}
+</table>{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<h2>{{ "Create Admin" if admin_mode else "Student Register" }}</h2>
+<form method="post" class="col-md-6">
+<input class="form-control mb-2" name="name" placeholder="Name" required>
+<input class="form-control mb-2" name="email" type="email" placeholder="Email" required>
+<input class="form-control mb-2" name="password" type="password" placeholder="Password (6+)" required>
+{% if not admin_mode %}<input class="form-control mb-2" name="student_id" type="number" placeholder="Existing Student ID" required>{% endif %}
+<button class="btn btn-success">Create</button>
+</form>
+{% endblock %}

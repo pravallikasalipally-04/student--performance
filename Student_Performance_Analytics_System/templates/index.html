@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="p-5 bg-light rounded">
+<h1>Student Performance Analytics System</h1>
+<p>Flask + MySQL + SQLAlchemy + JWT + Pandas + NumPy</p>
+<a class="btn btn-primary" href="{{ url_for('auth.login') }}">Login</a>
+<a class="btn btn-secondary" href="{{ url_for('auth.create_admin') }}">Create First Admin</a>
+</div>
+{% endblock %}
